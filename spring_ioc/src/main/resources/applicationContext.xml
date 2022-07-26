@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="userDao" class="com.it.dao.impl.UserDaoImpl">
+        <property name="username" value="黄裕甲"/>
+        <property name="age" value="19"/>
+        <property name="strList">
+            <list>
+                <value>天才</value>
+                <value>大聪明</value>
+            </list>
+        </property>
+
+        <property name="userMap">
+            <map>
+                <entry key="user1" value-ref="user1"></entry>
+            </map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="资源1" >百度</prop>
+                <prop key="资源2" >谷歌</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="user1" class="com.it.domain.User">
+        <property name="name" value="小黄"></property>
+        <property name="addr" value="深圳市"></property>
+    </bean>
+
+    <!--<bean id="userDao" class="com.it.factory.staticFactory" factory-method="getUserDao"></bean>-->
+
+    <!--先创建工厂对象，然后在获取类的对象-->
+    <!--><bean id="factory" class="com.it.factory.DynamicFactory"></bean>
+    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
+
+    <bean id="userService" class="com.it.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+
+
+</beans>
