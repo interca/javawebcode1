@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc= "http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--配置目标对象-->
+    <bean id="target" class="com.it.aop.Target"></bean>
+
+     <!--切面对象-->
+    <bean id="MyAspect" class="com.it.aop.MyAspect"></bean>
+
+    <!--哪些方法(切点)需要被进行哪些增强(前置)-->
+    <!--配置织入-->
+    <!--引入aop的命名空间-->
+    <aop:config>
+        <!--声明切面-->
+        <aop:aspect ref="MyAspect">
+            <!--切面等于切点加通知-->
+            <aop:before method="before" pointcut="execution(public void com.it.aop.Target.save())"></aop:before>
+        </aop:aspect>
+    </aop:config>
+</beans>
