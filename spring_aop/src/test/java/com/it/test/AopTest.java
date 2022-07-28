@@ -1,5 +1,6 @@
 package com.it.test;
 
+import com.it.aop.Target;
 import com.it.aop.TargetInterface;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,3 +20,5 @@ public class AopTest {
         targetInterface.save();
     }
 }
+
+
