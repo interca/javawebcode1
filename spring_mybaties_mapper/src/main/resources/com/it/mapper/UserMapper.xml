@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.domain.UserMapper">
+
+    <select id="findByCondition" parameterType="com.it.domain.User" resultType="com.it.domain.User">
+        select *from user where id=#{id} and username=#{username} and password=#{password}
+    </select>
+    <select id="findByIds" parameterType="list" resultType="com.it.domain.User">
+        <!--select from user id in(1,2,3)-->
+        select *from user
+        <where>
+            <foreach collection="list" open="id in(" close=")" item="id" separator=",">
+               #{id}
+            </foreach>
+        </where>
+    </select>
+</mapper>
