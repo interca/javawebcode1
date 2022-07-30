@@ -17,4 +17,8 @@
             </foreach>
         </where>
     </select>
+
+    <select id="findAll" resultType="com.it.domain.User">
+        select *from user
+    </select>
 </mapper>
