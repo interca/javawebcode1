@@ -1,0 +1,10 @@
+server:
+  port : 8080
+
+name: abc
+
+person:
+  name: 黄裕甲
+  age: 20
+
+address: [hunag,ni]
