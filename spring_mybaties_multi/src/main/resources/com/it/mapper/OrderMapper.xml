@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.mapper.OrderMapper">
+    <!--封装订单数据-->
+    <resultMap id="orderMap" type="com.it.domain.Order">
+        <!--手动指定字段和实体属性的关系
+          column数据表的字段名称，
+          property的属性名称
+         -->
+        <id column="oid" property="id"></id>
+        <result column="ordertime" property="ordertime"></result>
+        <result column="total" property="total"></result>
+        <result column="uid" property="user.id"></result>
+        <result column="username" property="user.username"></result>
+        <result column="password" property="user.password"></result>
+    </resultMap>
+    
+    <select id="findAll" resultMap="orderMap">
+        select  * ,o.id oid from orders o,user u where o.uid=u.id
+    </select>
+</mapper>
