@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.it.domain.Order;
 import com.it.domain.User;
 import com.it.mapper.OrderMapper;
+import com.it.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -28,6 +29,19 @@ public class MapperTest {
        for(Order k:orderList){
           System.out.println(k);
        }
+   }
+
+
+   @Test
+   public  void test2() throws IOException {
+      InputStream inputStream=Resources.getResourceAsStream("sqlMapConfig.xml");
+      SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+      SqlSession session=sqlSessionFactory.openSession();
+      UserMapper userMapper=session.getMapper(UserMapper.class);
+      List<User>orderList=userMapper.findAll();
+      for(User k:orderList){
+         System.out.println(k);
+      }
    }
 }
 

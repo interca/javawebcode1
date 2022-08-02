@@ -1,9 +1,21 @@
 package com.it.domain;
 
+import java.util.List;
+
 public class User {
     private int id;
     private String username;
     private  String password;
+
+    private List<Order>orderList;
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
 
     public int getId() {
         return id;
