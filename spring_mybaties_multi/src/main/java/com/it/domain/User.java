@@ -47,6 +47,8 @@ public class User {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", orderList=" + orderList +
                 '}';
     }
 }
+
