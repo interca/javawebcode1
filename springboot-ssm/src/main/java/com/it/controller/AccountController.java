@@ -4,6 +4,7 @@ import com.it.domain.Account;
 import com.it.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,14 +21,12 @@ public class AccountController {
     //保存
     @RequestMapping(value = "/save",produces = "text/html;charset=UTF-8")
     public  String save(Account account){
-        System.out.println("1");
         accountService.save(account);
         return "保存成功";
     }
 
     @RequestMapping(value = "/save2",produces = "text/html;charset=UTF-8")
     public  String save2(){
-        System.out.println("1");
         Account account=new Account();
         account.setName("李华");
         account.setMoney(20000);
@@ -36,14 +35,21 @@ public class AccountController {
     }
     //查询
     @RequestMapping("/findAll")
-    public ModelAndView findAll(){
+    public List<Account> findAll(){
         System.out.println("进入方法");
         System.out.println(accountService);
         List<Account> accountServiceAll = accountService.findAll();
         System.out.println(accountServiceAll);
-        ModelAndView modelAndView=new ModelAndView();
-        modelAndView.addObject("accountList1",accountServiceAll);
-        modelAndView.setViewName("pages/accountList.jsp");
-        return modelAndView;
+        return accountServiceAll;
+    }
+
+
+    @RequestMapping("quick/{id}")
+    public   List<Account> getid(@PathVariable(value = "id") int id){
+        Account account=new Account();
+        account.setId(id);
+        List<Account>list=accountService.findById(account);
+        System.out.println(list);
+        return  list;
     }
 }

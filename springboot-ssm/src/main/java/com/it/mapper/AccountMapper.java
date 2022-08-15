@@ -15,4 +15,6 @@ public interface AccountMapper {
 
 
     public List<Account>findAll();
+
+    List<Account> findById(Account account);
 }

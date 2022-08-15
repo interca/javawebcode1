@@ -10,4 +10,8 @@
     <select id="findAll" resultType="com.it.domain.Account">
         select * from account
     </select>
+
+    <select id="findById" resultType="com.it.domain.Account"  parameterType="com.it.domain.Account">
+        select *from account where id=#{id}
+    </select>
 </mapper>

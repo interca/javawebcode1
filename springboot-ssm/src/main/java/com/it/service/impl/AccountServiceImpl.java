@@ -25,4 +25,9 @@ public class AccountServiceImpl implements AccountService {
         List<Account> all = mapper.findAll();
         return all;
     }
+
+    @Override
+    public List<Account> findById(Account account) {
+        return mapper.findById(account);
+    }
 }

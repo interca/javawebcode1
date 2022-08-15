@@ -13,4 +13,6 @@ public interface AccountService {
 
 
     public List<Account>findAll();
+
+    List<Account> findById(Account account);
 }
